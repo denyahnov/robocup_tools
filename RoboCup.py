@@ -23,7 +23,7 @@ def Unpack(values) -> list:
 		except TypeError:
 			yield item
 
-def Average(self,values) -> float:
+def Average(values) -> float:
 	return sum(values) / len(values)
 
 class Clamper():
