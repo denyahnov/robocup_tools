@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "robocup_tools`"
+name = "robocup_tools"
 version = "0.0.1"
 authors = [
   { name="Dennis Yahnov", email="den.yakhnov@gmail.com" },

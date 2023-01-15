@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: robocup-tools
+Version: 0.0.1
+Summary: ev3dev2 Wrapper for RoboCup
+Author-email: Dennis Yahnov <den.yakhnov@gmail.com>
+Project-URL: Homepage, https://github.com/denyahnov/robocup_tools
+Project-URL: Bug Tracker, https://github.com/denyahnov/robocup_tools/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# RoboCup.py
+
+Use `ExampleProject()` to see usage of the wrapper
+
+- `Clamper` (Motor Speeds, Sensor Values, etc)
+- `FilteredSensor` (Averages values for accurate data)
+- `PID_Controller` (Simple PID Controller)
+- `Robot` (Easy to setup robot class with many features)
+- `Driver` (HiTechnic Sensor Driver Names)

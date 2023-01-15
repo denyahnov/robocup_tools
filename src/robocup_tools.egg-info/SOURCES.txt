@@ -1,0 +1,8 @@
+LICENSE
+README.md
+pyproject.toml
+src/RoboCup/__init__.py
+src/robocup_tools.egg-info/PKG-INFO
+src/robocup_tools.egg-info/SOURCES.txt
+src/robocup_tools.egg-info/dependency_links.txt
+src/robocup_tools.egg-info/top_level.txt
