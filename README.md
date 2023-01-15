@@ -1,5 +1,15 @@
 # RoboCup.py
 
+## Requirements.
+
+- [python-ev3dev2](https://pypi.org/project/python-ev3dev2/)
+
+## Installation & Usage
+
+```sh
+pip install robocup_tools
+```
+
 Use `ExampleProject()` to see usage of the wrapper
 
 - `Clamper` (Motor Speeds, Sensor Values, etc)
