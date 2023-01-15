@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robocup_tools`"
+version = "0.0.1"
+authors = [
+  { name="Dennis Yahnov", email="den.yakhnov@gmail.com" },
+]
+description = "ev3dev2 Wrapper for RoboCup"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/denyahnov/robocup_tools"
+"Bug Tracker" = "https://github.com/denyahnov/robocup_tools/issues"
