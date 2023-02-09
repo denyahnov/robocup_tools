@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+from ev3dev2.display import Display
 from ev3dev2.button import Button
 from ev3dev2.sound import Sound
 from ev3dev2.led import Leds
@@ -30,7 +33,14 @@ class Clamper():
 	def __init__(self,min_value: int,max_value: int) -> None:
 		self.min_value = min_value; self.max_value = max_value
 
-	def Clamp(self,values: int or list[int]) -> list[int]:
+	def Clamp(self,value: int) -> list:
+		if value < self.min_value: value = self.min_value
+		if value > self.max_value: value = self.max_value
+
+		return value
+
+
+	def ClampList(self,values: list) -> list:
 		values = list(Unpack(values))
 		clamped = [None] * len(values)
 
@@ -85,7 +95,7 @@ class FilteredSensor():
 
 class Robot():
 	def __init__(self) -> None:
-		self.Port: dict = {
+		self.Port = {
 			"A": None,
 			"B": None,
 			"C": None,
@@ -99,16 +109,20 @@ class Robot():
 		self.Leds = Leds()
 		self.Sound = Sound()
 		self.Buttons = Button()
+		self.Display = Display()
 		self.Speed = Clamper(-100,100)
 
 	def CoastMotors(self) -> None:
 		[self.Port[p].off(brake=False) for p in list("ABCD") if self.Port[p] != None]
 
-	def Color(self,color) -> None:
-		self.Leds.set_color('LEFT',color)
-		self.Leds.set_color('RIGHT',color)
+	def ResetMotors(self) -> None:
+		[self.Port[p].reset() for p in list("ABCD") if self.Port[p] != None]
 
-	def ScaleSpeeds(self,target_value:int,speeds:list[float]) -> list[float]:
+	def Color(self,color) -> None:
+		self.Leds.set_color('LEFT',color.upper())
+		self.Leds.set_color('RIGHT',color.upper())
+
+	def ScaleSpeeds(self,target_value:int,speeds:list) -> list:
 		greatest = max([abs(speed) for speed in speeds])
 
 		if greatest > target_value: greatest = target_value
@@ -121,16 +135,16 @@ class Robot():
 		return speeds
 
 	def PrintPorts(self) -> None:
-		print('\n'.join([self.Port[x] != None for x in self.Ports]))
+		print('\n'.join([str(self.Port[x] != None) for x in self.Port]))
 
-	def AngleToXY(self,angle,speed) -> tuple[float]:
+	def AngleToXY(self,angle,speed) -> tuple:
 		x = speed * cos(angle)
 		y = speed * sin(angle)
 
 		return (x,y)
 
 	def StartMotors(self,speeds) -> None:
-		speeds = Unpack(speeds)
+		speeds = list(Unpack(speeds))
 		for p in list("ABCD"):
 			if self.Port[p] != None:
 				self.Port[p].on(SpeedPercent(self.Speed.Clamp(speeds[0])))
